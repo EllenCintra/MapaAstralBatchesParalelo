@@ -12,7 +12,23 @@ import java.util.List;
 public class ArquivosPessoa implements PathConfigs {
 
     public static void gerarArquivosPorParticipante(List<String> participantes) {
+        participantes.forEach(participante -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            criarArquivoDaPessoa(criarObjetoPessoa(participante));
+        });
+    }
+
+    public static void gerarArquivosPorParticipanteEmParalelo(List<String> participantes) {
         participantes.parallelStream().forEach(participante -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             criarArquivoDaPessoa(criarObjetoPessoa(participante));
         });
     }

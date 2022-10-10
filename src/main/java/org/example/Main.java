@@ -8,13 +8,20 @@ import java.nio.file.Path;
 import java.util.List;
 
 import static org.example.service.ArquivosPessoa.gerarArquivosPorParticipante;
+import static org.example.service.ArquivosPessoa.gerarArquivosPorParticipanteEmParalelo;
 
 
 public class Main implements PathConfigs {
 
     public static void main(String[] args) throws IOException {
+        var time = System.currentTimeMillis();
+
         List<String> participantes = lerAquivoParticipantes();
-        gerarArquivosPorParticipante(participantes);
+
+        //gerarArquivosPorParticipante(participantes);
+        gerarArquivosPorParticipanteEmParalelo(participantes);
+
+        System.out.println(System.currentTimeMillis()-time);
     }
 
     /**
