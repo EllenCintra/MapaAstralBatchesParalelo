@@ -8,21 +8,21 @@ import static org.example.utils.DataUtils.verificarSeEstaEntreDatas;
 
 public interface MapaAstral {
 
-        static String verificarSigno(MonthDay aniversario) {
-        MonthDay leaoComecaEm = MonthDay.of(7,22);
-        MonthDay leaoTerminaEm = MonthDay.of(8,23);
+    static String verificarSigno(MonthDay aniversario) {
+        MonthDay leaoComecaEm = MonthDay.of(7, 22);
+        MonthDay leaoTerminaEm = MonthDay.of(8, 23);
 
-        MonthDay sagitarioComecaEm = MonthDay.of(11,21);
-        MonthDay sagitarioTerminaEm = MonthDay.of(12,22);
+        MonthDay sagitarioComecaEm = MonthDay.of(11, 21);
+        MonthDay sagitarioTerminaEm = MonthDay.of(12, 22);
 
-        MonthDay aquarioComecaEm = MonthDay.of(01,21);
-        MonthDay aquarioTerminaEm = MonthDay.of(02,19);
+        MonthDay aquarioComecaEm = MonthDay.of(01, 21);
+        MonthDay aquarioTerminaEm = MonthDay.of(02, 19);
 
-        MonthDay cancerComecaEm = MonthDay.of(06,22);
-        MonthDay cancerTerminaEm = MonthDay.of(07,22);
+        MonthDay cancerComecaEm = MonthDay.of(06, 22);
+        MonthDay cancerTerminaEm = MonthDay.of(07, 22);
 
-        MonthDay escorpiaoComecaEm = MonthDay.of(10,23);
-        MonthDay escorpiaoTerminaEm = MonthDay.of(11,21);
+        MonthDay escorpiaoComecaEm = MonthDay.of(10, 23);
+        MonthDay escorpiaoTerminaEm = MonthDay.of(11, 21);
 
         if (verificarSeEstaEntreDatas(aniversario, leaoComecaEm, leaoTerminaEm)) return "Leão";
 

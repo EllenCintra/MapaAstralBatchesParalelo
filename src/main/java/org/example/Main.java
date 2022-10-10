@@ -14,7 +14,6 @@ import static org.example.service.ArquivosPessoa.criarUmArquivoPorPessoa;
 
 public class Main implements PathConfigs {
 
-
     public static void main(String[] args) throws IOException {
 
         List<String> lines = lerAquivoParticipantes();

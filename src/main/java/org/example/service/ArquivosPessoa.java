@@ -15,7 +15,7 @@ public class ArquivosPessoa implements PathConfigs {
     public static List<Pessoa> criarObjetosPessoa(List<String> lines) {
         List<Pessoa> pessoas = new ArrayList<>();
 
-        lines.stream().parallel().forEach(line -> {
+        lines.forEach(line -> {
             String[] campos = line.split(",");
             String nome = campos[0];
             String zona = campos[1];
@@ -27,8 +27,8 @@ public class ArquivosPessoa implements PathConfigs {
         return pessoas;
     }
 
-    public static void criarUmArquivoPorPessoa(List<Pessoa> pessoaList) {
-        pessoaList.stream().parallel().forEach((pessoa -> {
+    public static void criarUmArquivoPorPessoa(List<Pessoa> pessoas) {
+        pessoas.parallelStream().forEach((pessoa -> {
             try {
                 Files.write(PathConfigs.gerarPath("/files/" + pessoa.getNome() + ".txt"), pessoa.gerarRelatorio(), StandardCharsets.UTF_8);
             } catch (IOException e) {
