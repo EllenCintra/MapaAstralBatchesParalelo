@@ -1,3 +1,3 @@
 # Mapa-Astral-Paralelo
-Exercício das aulas de Programação Paralela e Concorrente no Bootcamp Experts
+Branch criada apenas para verificar a criação dos arquivos em paralelo
 
