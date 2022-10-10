@@ -1,36 +1,83 @@
 package org.example;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class Pessoa {
+	private UUID id;
+
 	private String nome;
 
 	private String cidadeNascimento;
 
 	private LocalDate dataNascimento;
-
 	private String signo;
 
 	private Integer idade;
 
-	private String geracao;
+	public String getNome() {
+		return nome;
+	}
 
-	public String getNome() { return nome; }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCidadeNascimento() {
+		return cidadeNascimento;
+	}
+
+	public void setCidadeNascimento(String cidadeNascimento) {
+		this.cidadeNascimento = cidadeNascimento;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 	public String getSigno() {
 		return signo;
+	}
+
+	public void setSigno(String signo) {
+		this.signo = signo;
 	}
 
 	public Integer getIdade() {
 		return idade;
 	}
 
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
 	public String getGeracao() {
 		return geracao;
 	}
 
+	public void setGeracao(String geracao) {
+		this.geracao = geracao;
+	}
+
+	private String geracao;
+
+	public UUID getId() {
+		return id;
+	}
+
 	public Pessoa (String nome, String cidadeNascimento, LocalDate dataNascimento) {
+		this.id = UUID.randomUUID();
 		this.nome = nome;
 		this.cidadeNascimento = cidadeNascimento;
 		this.dataNascimento = dataNascimento;
@@ -52,8 +99,7 @@ public class Pessoa {
 		MonthDay cancerComecaEm = MonthDay.of(06,22);
 		MonthDay cancerTerminaEm = MonthDay.of(07,22);
 
-		MonthDay escorpiaoComecaEm = MonthDay.of(10,23);
-		MonthDay escorpiaoTerminaEm = MonthDay.of(11,21);
+		MonthDay escorpiaoComecaEm = MonthDay.of(10,23);		MonthDay escorpiaoTerminaEm = MonthDay.of(11,21);
 
 		if (verificarSeEstaEntreDatas(aniversario, leaoComecaEm, leaoTerminaEm)) return "Leão";
 

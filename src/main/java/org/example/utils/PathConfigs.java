@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utils;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -7,7 +7,7 @@ public interface PathConfigs {
 
     String HOME_PATH = configurarHomePath();
 
-    static String configurarHomePath() {
+    private static String configurarHomePath() {
         return System.getProperty("user.dir");
     }
 

@@ -1,4 +1,7 @@
-package org.example;
+package org.example.service;
+
+import org.example.model.Pessoa;
+import org.example.utils.PathConfigs;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -7,12 +10,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArquivosPessoa implements PathConfigs{
+public class ArquivosPessoa implements PathConfigs {
 
     public static List<Pessoa> criarObjetosPessoa(List<String> lines) {
         List<Pessoa> pessoas = new ArrayList<>();
 
-        lines.parallelStream().forEach(line -> {
+        lines.stream().parallel().forEach(line -> {
             String[] campos = line.split(",");
             String nome = campos[0];
             String zona = campos[1];
@@ -25,7 +28,7 @@ public class ArquivosPessoa implements PathConfigs{
     }
 
     public static void criarUmArquivoPorPessoa(List<Pessoa> pessoaList) {
-        pessoaList.parallelStream().forEach((pessoa -> {
+        pessoaList.stream().parallel().forEach((pessoa -> {
             try {
                 Files.write(PathConfigs.gerarPath("/files/" + pessoa.getNome() + ".txt"), pessoa.gerarRelatorio(), StandardCharsets.UTF_8);
             } catch (IOException e) {
