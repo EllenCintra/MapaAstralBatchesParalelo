@@ -7,33 +7,30 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArquivosPessoa implements PathConfigs {
 
-    public static List<Pessoa> criarObjetosPessoa(List<String> lines) {
-        List<Pessoa> pessoas = new ArrayList<>();
-
-        lines.forEach(line -> {
-            String[] campos = line.split(",");
-            String nome = campos[0];
-            String zona = campos[1];
-            LocalDate dataNascimento = LocalDate.parse(campos[2]);
-
-            pessoas.add(new Pessoa(nome, zona, dataNascimento));
+    public static void gerarArquivosPorParticipante(List<String> participantes) {
+        participantes.parallelStream().forEach(participante -> {
+            criarArquivoDaPessoa(criarObjetoPessoa(participante));
         });
-
-        return pessoas;
     }
 
-    public static void criarUmArquivoPorPessoa(List<Pessoa> pessoas) {
-        pessoas.parallelStream().forEach((pessoa -> {
-            try {
-                Files.write(PathConfigs.gerarPath("/files/" + pessoa.getNome() + ".txt"), pessoa.gerarRelatorio(), StandardCharsets.UTF_8);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }));
+    public static Pessoa criarObjetoPessoa(String participante) {
+        String[] dadosPessoa = participante.split(",");
+        String nome = dadosPessoa[0];
+        String zona = dadosPessoa[1];
+        LocalDate dataNascimento = LocalDate.parse(dadosPessoa[2]);
+
+        return new Pessoa(nome, zona, dataNascimento);
+    }
+
+    private static void criarArquivoDaPessoa(Pessoa pessoa) {
+        try {
+            Files.write(PathConfigs.gerarPath("/files/" + pessoa.getNome() + ".txt"), pessoa.gerarRelatorio(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
