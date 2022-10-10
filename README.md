@@ -1,3 +1,3 @@
-# Mapa-Astral-Paralelo
+# MapaAstralBatchesParalelo
 Branch criada apenas para verificar a criação dos arquivos em paralelo
 
